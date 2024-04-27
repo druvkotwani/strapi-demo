@@ -362,30 +362,79 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiDemoQuilllDemoQuilll extends Schema.CollectionType {
-  collectionName: 'demo_quillls';
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
   info: {
-    singularName: 'demo-quilll';
-    pluralName: 'demo-quillls';
-    displayName: 'demo-quilll';
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Text: Attribute.String;
-    image: Attribute.Media;
+    Tag: Attribute.String;
+    page_data: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::page-data.page-data'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::demo-quilll.demo-quilll',
+      'api::category.category',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::demo-quilll.demo-quilll',
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPageDataPageData extends Schema.CollectionType {
+  collectionName: 'page_datas';
+  info: {
+    singularName: 'page-data';
+    pluralName: 'page-datas';
+    displayName: 'Page-data';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    h1: Attribute.String;
+    h1_description: Attribute.Text;
+    imgText: Attribute.Text;
+    bgImgHero: Attribute.Media;
+    heroLogo: Attribute.Media;
+    Before: Attribute.Blocks;
+    After: Attribute.Blocks;
+    path: Attribute.String;
+    ReadingTime: Attribute.String;
+    Library_Text: Attribute.Text;
+    textData: Attribute.Blocks;
+    categories: Attribute.Relation<
+      'api::page-data.page-data',
+      'manyToMany',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::page-data.page-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::page-data.page-data',
       'oneToOne',
       'admin::user'
     > &
@@ -829,7 +878,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::demo-quilll.demo-quilll': ApiDemoQuilllDemoQuilll;
+      'api::category.category': ApiCategoryCategory;
+      'api::page-data.page-data': ApiPageDataPageData;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * demo-quilll service
+ * category service
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::demo-quilll.demo-quilll');
+module.exports = createCoreService('api::category.category');

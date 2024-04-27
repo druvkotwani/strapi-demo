@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "page_datas",
+  "info": {
+    "singularName": "page-data",
+    "pluralName": "page-datas",
+    "displayName": "Page-data"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "h1": {
+      "type": "string"
+    },
+    "h1_description": {
+      "type": "text"
+    },
+    "imgText": {
+      "type": "text"
+    },
+    "bgImgHero": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "heroLogo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "Before": {
+      "type": "blocks"
+    },
+    "After": {
+      "type": "blocks"
+    },
+    "path": {
+      "type": "string"
+    },
+    "ReadingTime": {
+      "type": "string"
+    },
+    "Library_Text": {
+      "type": "text"
+    },
+    "textData": {
+      "type": "blocks"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "mappedBy": "page_data"
+    }
+  }
+}

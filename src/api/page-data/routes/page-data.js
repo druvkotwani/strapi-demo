@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * demo-quilll router
+ * page-data router
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::demo-quilll.demo-quilll');
+module.exports = createCoreRouter('api::page-data.page-data');
